@@ -1,0 +1,41 @@
+body {
+    background-image: url('/images/indexpic.jpg'); /* Ensure the image path is correct */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    flex-direction: row; /* This line is usually unnecessary as 'row' is default */
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 30px; /* Space between title and buttons */
+}
+.button {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #4CAF50; /* Green background for buttons */
+    transition: background-color 0.3s;
+}
+.button:hover {
+    background-color: #45a049; /* Darker shade of green */
+}
+
+
+
