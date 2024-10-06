@@ -1,1 +1,30 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: /ZhengHanShuu/COMP7082_Group5  
+          token: ${{ secrets.GH_TOKEN }}
+          ref: main 
+
+      - name: Clone production repo
+        run: |
+          git config --global user.name "bcherng"
+          git config --global user.email "briancherngsch@gmail.com"
+          git clone https://github.com/bcherng/7082.git
+          cd https://github.com/bcherng/7082.git
+          cp -r ../* .  
+          git add .
+          git commit -m "Deploy from testing repo"
+          git push https://bcherng:${{ secrets.GH_TOKEN }}@github.com/bcherng/7082.git
 
