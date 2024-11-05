@@ -1,0 +1,85 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('/images/indexpic.jpg');
+    background-color: #eef2f3;
+    background-size: cover; /* This makes the background image cover the entire viewport */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-position: center; /* Centers the background image */
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+h3 {
+    color: #28a745;
+    margin-top: 20px;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 10px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 50%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border 0.3s;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #28a745;
+    outline: none;
+}
+.question {
+    margin-bottom: 40px; /* Increased spacing between questions */
+}
+.radio-group,
+.checkbox-group {
+    margin-left: 10px; /* Aligns checkboxes and radio buttons */
+}
+.inline-input {
+    display: inline-block;
+    margin-right: 10px;
+}
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+button:hover {
+    background-color: #218838;
+}
+.injury-specify {
+    margin-top: 10px;
+    width: 60%;
+}
+@media (max-width: 600px) {
+    .injury-specify {
+        width: 100%;
+    }
+}
