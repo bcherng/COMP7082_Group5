@@ -1,0 +1,30 @@
+body {
+    background-color: #212529;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.nav-pills .nav-link {
+    background-color: #333;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #4caf50;
+    color: #ffffff;
+}

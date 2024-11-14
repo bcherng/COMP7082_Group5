@@ -44,3 +44,43 @@ editButton.addEventListener('click', () => {
 saveButton.addEventListener('click', () => {
     toggleEditMode(false);
 });
+
+//update profile
+const profileImage = document.getElementById('profile-image');
+const profileImageInput = document.getElementById('profile-image-input');
+const updateProfileButton = document.getElementById('update-profile-button');
+
+
+// Show file input when "Update Profile Picture" button is clicked
+updateProfileButton.addEventListener('click', () => {
+    profileImageInput.click();
+});
+
+// Update profile picture when a new file is selected
+profileImageInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            profileImage.src = e.target.result; // Update the image source
+        };
+        reader.readAsDataURL(file); // Convert the image file to a data URL
+    }
+});
+
+//progress tracking
+// Update progress numbers dynamically
+function updateProgress(weightProgress, workoutProgress, caloriesProgress) {
+    const weightProgressNumber = document.getElementById('weight-progress-number');
+    const workoutProgressNumber = document.getElementById('workout-progress-number');
+    const caloriesProgressNumber = document.getElementById('calories-progress-number');
+
+    // Update the progress numbers
+    weightProgressNumber.textContent = `${weightProgress}%`;
+    workoutProgressNumber.textContent = `${workoutProgress}%`;
+    caloriesProgressNumber.textContent = `${caloriesProgress}%`;
+}
+
+// Example usage: Update with sample values
+updateProgress(30, 60, 80);
+
