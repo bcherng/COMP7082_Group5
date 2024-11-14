@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Application Questionnaire</title>
+    <link rel="stylesheet" href="./styles/survey.css">
+    <style></style>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevents the default form submission
+            alert('Form submitted successfully!'); // Displays an alert
+            // add form submission logic.
+            const formData = new FormData(event.target);
+            fetch('/your-endpoint-url', {
+                method: 'POST',
+                body: formData,
+            }).then(response => {
+                if (response.ok) {
+                    alert('Form submitted successfully!'); // Displays an alert
+                    location.reload(); // Refreshes the page
+                } else {
+                    alert('There was a problem with the submission.'); // Handle error
+                }
+            }).catch(error => {
+                alert('There was a network error.'); // Handle network error
+            });
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Fitness Questionnaire</h2>
+    <form action="/submit-questionnaire" method="POST" onsubmit="handleSubmit(event)">
+        <div class="section question">
+            <h3>Section 1: Personal Information</h3>
+            <label for="name">1) What is your name? (Optional) </label>
+            <input type="text" id="name" name="name">
+
+            <label>2) How old are you?</label>
+            <div class="radio-group">
+                <div class="inline-input">
+                    <input type="radio" id="under_18" name="age" value="under_18">
+                    <label for="under_18">Under 18</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="18_24" name="age" value="18-24">
+                    <label for="18_24">18-24</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="25_34" name="age" value="25-34">
+                    <label for="25_34">25-34</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="35_44" name="age" value="35-44">
+                    <label for="35_44">35-44</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="45_54" name="age" value="45-54">
+                    <label for="45_54">45-54</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="55_plus" name="age" value="55+">
+                    <label for="55_plus">55+</label>
+                </div>
+            </div>
+
+            <br>
+
+            <label>3) What is your gender?</label>
+            <div class="radio-group">
+                <div class="inline-input">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other/Prefer not to say</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section question">
+            <h3>Section 2: Fitness Goals</h3>
+            <label>4) What are your main fitness goals? (Select all that apply)</label>
+            <div class="checkbox-group">
+                <div class="inline-input">
+                    <input type="checkbox" id="lose_weight" name="goals" value="lose_weight">
+                    <label for="lose_weight">Lose weight</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="build_muscle" name="goals" value="build_muscle">
+                    <label for="build_muscle">Build muscle</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="improve_endurance" name="goals" value="improve_endurance">
+                    <label for="improve_endurance">Improve endurance</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="increase_flexibility" name="goals" value="increase_flexibility">
+                    <label for="increase_flexibility">Increase flexibility</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="improve_health" name="goals" value="improve_health">
+                    <label for="improve_health">Improve overall health</label>
+                </div>
+            </div>
+
+            <br>
+
+            <label>5) Do you have a specific time frame for achieving these goals?</label>
+            <div class="radio-group">
+                <div class="inline-input">
+                    <input type="radio" id="1_3_months" name="time_frame" value="1-3 months">
+                    <label for="1_3_months">1-3 months</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="4_6_months" name="time_frame" value="4-6 months">
+                    <label for="4_6_months">4-6 months</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="7_12_months" name="time_frame" value="7-12 months">
+                    <label for="7_12_months">7-12 months</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="no_time_frame" name="time_frame" value="no_specific_time_frame">
+                    <label for="no_time_frame">No specific time frame</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section question">
+            <h3>Section 3: Fitness Level</h3>
+            <label>6) How would you describe your current fitness level?</label>
+            <div class="radio-group">
+                <div class="inline-input">
+                    <input type="radio" id="beginner" name="fitness_level" value="beginner">
+                    <label for="beginner">Beginner</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="intermediate" name="fitness_level" value="intermediate">
+                    <label for="intermediate">Intermediate</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="advanced" name="fitness_level" value="advanced">
+                    <label for="advanced">Advanced</label>
+                </div>
+            </div>
+
+            <br>
+
+            <label>7) How often do you currently exercise?</label>
+            <div class="radio-group">
+                <div class="inline-input">
+                    <input type="radio" id="rarely" name="exercise_frequency" value="rarely">
+                    <label for="rarely">Rarely/Never</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="1_2_times" name="exercise_frequency" value="1-2 times">
+                    <label for="1_2_times">1-2 times per week</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="3_4_times" name="exercise_frequency" value="3-4 times">
+                    <label for="3_4_times">3-4 times per week</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="5_6_times" name="exercise_frequency" value="5-6 times">
+                    <label for="5_6_times">5-6 times per week</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="everyday" name="exercise_frequency" value="everyday">
+                    <label for="everyday">Everyday</label>
+                </div>
+            </div>
+
+            <br>
+
+            <label>8) What types of exercise do you usually do? (Select all that apply)</label>
+            <div class="checkbox-group">
+                <div class="inline-input">
+                    <input type="checkbox" id="strength_training" name="exercise_types" value="strength_training">
+                    <label for="strength_training">Strength training (weights or bodyweight)</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="cardio" name="exercise_types" value="cardio">
+                    <label for="cardio">Cardio (running, cycling, etc.)</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="flexibility" name="exercise_types" value="flexibility">
+                    <label for="flexibility">Flexibility/Mobility (yoga, pilates, etc.)</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="sports" name="exercise_types" value="sports">
+                    <label for="sports">Sports (football, basketball, etc.)</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section question">
+            <h3>Section 4: Workout Preferences</h3>
+            <label>9) How much time can you dedicate to working out per session?</label>
+            <div class="radio-group">
+                <div class="inline-input">
+                    <input type="radio" id="less_than_30" name="workout_time" value="less_than_30">
+                    <label for="less_than_30">Less than 30 minutes</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="30_45" name="workout_time" value="30-45">
+                    <label for="30_45">30-45 minutes</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="45_60" name="workout_time" value="45-60">
+                    <label for="45_60">45-60 minutes</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="more_than_60" name="workout_time" value="more_than_60">
+                    <label for="more_than_60">More than 60 minutes</label>
+                </div>
+            </div>
+
+            <br>
+
+            <label>10) What days are you available to work out? (Select all that apply)</label>
+            <div class="checkbox-group">
+                <div class="inline-input">
+                    <input type="checkbox" id="monday" name="workout_days" value="monday">
+                    <label for="monday">Monday</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="tuesday" name="workout_days" value="tuesday">
+                    <label for="tuesday">Tuesday</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="wednesday" name="workout_days" value="wednesday">
+                    <label for="wednesday">Wednesday</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="thursday" name="workout_days" value="thursday">
+                    <label for="thursday">Thursday</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="friday" name="workout_days" value="friday">
+                    <label for="friday">Friday</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="saturday" name="workout_days" value="saturday">
+                    <label for="saturday">Saturday</label>
+                </div>
+                <div class="inline-input">
+                    <input type="checkbox" id="sunday" name="workout_days" value="sunday">
+                    <label for="sunday">Sunday</label>
+                </div>
+            </div>
+
+            <br>
+
+            <label>11) Where do you prefer working out?</label>
+            <div class="radio-group">
+                <div class="inline-input">
+                    <input type="radio" id="gym" name="workout_location" value="gym">
+                    <label for="gym">In the gym</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="home" name="workout_location" value="home">
+                    <label for="home">At home</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="outdoors" name="workout_location" value="outdoors">
+                    <label for="outdoors">Outdoors</label>
+                </div>
+                <div class="inline-input">
+                    <input type="radio" id="no_preference" name="workout_location" value="no_preference">
+                    <label for="no_preference">No preference</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section question">
+            <h3>Section 5: Physical Limitations</h3>
+            <label>12) Do you have any injuries or physical conditions that might affect your workout?</label>
+            <div class="radio-group">
+                <div class="inline-input">
+                    <input type="radio" id="yes" name="injuries" value="yes">
+                    <label for="yes">Yes, Please specify: <input type="text" name="injury_details" class="injury-specify"></label>
+
+                    <input type="radio" id="no" name="injuries" value="no">
+                    <label for="no">No</label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
+
