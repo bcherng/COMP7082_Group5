@@ -69,3 +69,50 @@ body {
     color: #757575; 
 }
 
+#profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+
+
+.progress-section .progress-card {
+    background-color: #ffffff !important; 
+    border-radius: 10px;
+    height: 150px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.progress-section .card-body {
+    padding: 10px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.progress-section .card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.progress-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4caf50;
+    margin: 0;
+}
+
+
+
+
