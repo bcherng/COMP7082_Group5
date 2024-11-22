@@ -21,6 +21,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         if (data.token) {
             // If the token is returned
             localStorage.setItem('authToken', data.token);  // Store token in localStorage
+            localStorage.setItem('username', username);  // Store username in localstorage
             window.location.href = '/survey.html';  // Redirect to survey page
         } else {
             // Handle the case where token is missing (login failed)
