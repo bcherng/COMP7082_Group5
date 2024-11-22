@@ -6,33 +6,12 @@
     <title>Fitness Application Questionnaire</title>
     <link rel="stylesheet" href="./styles/survey.css">
     <style></style>
-    <script>
-        function handleSubmit(event) {
-            event.preventDefault(); // Prevents the default form submission
-            alert('Form submitted successfully!'); // Displays an alert
-            // add form submission logic.
-            const formData = new FormData(event.target);
-            fetch('/your-endpoint-url', {
-                method: 'POST',
-                body: formData,
-            }).then(response => {
-                if (response.ok) {
-                    alert('Form submitted successfully!'); // Displays an alert
-                    location.reload(); // Refreshes the page
-                } else {
-                    alert('There was a problem with the submission.'); // Handle error
-                }
-            }).catch(error => {
-                alert('There was a network error.'); // Handle network error
-            });
-        }
-    </script>
 </head>
 <body>
 
 <div class="container">
     <h2>Fitness Questionnaire</h2>
-    <form action="/submit-questionnaire" method="POST" onsubmit="handleSubmit(event)">
+    <form id ="survey-form">
         <div class="section question">
             <h3>Section 1: Personal Information</h3>
             <label for="name">1) What is your name? (Optional) </label>
@@ -297,6 +276,8 @@
         <button type="submit">Submit</button>
     </form>
 </div>
+
+<script type="text/javascript" src="scripts/survey.js"></script>
 
 </body>
 </html>
