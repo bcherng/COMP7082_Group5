@@ -21,10 +21,10 @@ function generateTabs() {
 }
 
 // Function to fetch workout data from the backend
-async function fetchWorkout(day) {
+async function fetchWorkout() {
     try {
-        const username = 'testuser'; // Replace with dynamic username if needed
-        const response = await fetch(`${API_BASE_URL}/workout-routine?day=${day}&username=${username}`);
+        const username = 'testtest'; // Replace with dynamic username if needed
+        const response = await fetch(`${API_BASE_URL}/workout-routine?username=${username}`);
         if (!response.ok) {
             throw new Error(`Error fetching workout data: ${response.statusText}`);
         }
@@ -40,16 +40,18 @@ async function loadWorkout(day) {
     contentContainer.innerHTML = ''; // Clear previous content
 
     try {
-        const data = await fetchWorkout(day);
+        const data = await fetchWorkout();
 
-        if (!data || !data.exercises) {
+        if (!data || !data[day]) {
             contentContainer.innerHTML = `<p class="text-center text-warning">No workout data available for ${day}.</p>`;
             return;
         }
 
+        const exercises = data[day];
+
         // Populate workout content
-        data.exercises.forEach(exercise => {
-            const { name, sets, reps, duration, rest, icon } = exercise;
+        exercises.forEach((exercise) => {
+            const [name, reps, sets, rest] = exercise;
             const exerciseDetails = sets && reps
                 ? `Sets: ${sets} | Reps: ${reps} | Rest: ${rest}`
                 : `Duration: ${duration} | Rest: ${rest}`;
@@ -59,13 +61,14 @@ async function loadWorkout(day) {
                         <div class="card-body text-center">
                             <h5 class="card-title">${name}</h5>
                             <p class="card-text">${exerciseDetails}</p>
-                            <i class="${icon || 'fas fa-dumbbell'} fa-3x mb-3"></i>
+                            <i class="fas fa-dumbbell fa-3x mb-3"></i>
                         </div>
                     </div>
                 </div>
             `;
             contentContainer.insertAdjacentHTML('beforeend', card);
         });
+        
     } catch (error) {
         contentContainer.innerHTML = `<p class="text-center text-danger">Failed to load workout data for ${day}. Please try again later.</p>`;
     }
