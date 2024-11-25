@@ -21,9 +21,8 @@ function generateTabs() {
 }
 
 // Function to fetch workout data from the backend
-async function fetchWorkout() {
+async function fetchWorkout(username) {
     try {
-        const username = 'testtest'; // Replace with dynamic username if needed
         const response = await fetch(`${API_BASE_URL}/workout-routine?username=${username}`);
         if (!response.ok) {
             throw new Error(`Error fetching workout data: ${response.statusText}`);
@@ -40,7 +39,14 @@ async function loadWorkout(day) {
     contentContainer.innerHTML = ''; // Clear previous content
 
     try {
-        const data = await fetchWorkout();
+
+        const username = localStorage.getItem('username'); // Retrieve logged-in user's username
+        if (!username) {
+            contentContainer.innerHTML = `<p class="text-center text-danger">User not logged in. Please log in to view your workout plan.</p>`;
+            return;
+        }
+
+        const data = await fetchWorkout(username);
 
         if (!data || !data[day]) {
             contentContainer.innerHTML = `<p class="text-center text-warning">No workout data available for ${day}.</p>`;
