@@ -46,7 +46,8 @@ async function handleSubmit(event) {
         const result = await response.json();
         if (response.ok) {
             alert('Form submitted successfully!');
-            window.location.reload();
+            // window.location.reload();
+            window.location.href = '/workout_page.html';
         } else {
             alert('There was a problem with the submission: ' + result.message);
         }
