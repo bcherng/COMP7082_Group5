@@ -37,6 +37,15 @@ async function fetchWorkout(username) {
 // Function to load workout content for a specific day
 async function loadWorkout(day) {
     contentContainer.innerHTML = ''; // Clear previous content
+    const allTabs = document.querySelectorAll('#weekdaysTab .nav-link');
+    allTabs.forEach((tab) => {
+        tab.classList.remove('active');
+    });
+
+    const selectedTab = document.querySelector(`#weekdaysTab .nav-link[data-day="${day}"]`);
+    if (selectedTab) {
+        selectedTab.classList.add('active'); 
+    }
 
     try {
 
@@ -45,7 +54,6 @@ async function loadWorkout(day) {
             contentContainer.innerHTML = `<p class="text-center text-danger">User not logged in. Please log in to view your workout plan.</p>`;
             return;
         }
-
         const data = await fetchWorkout(username);
 
         if (!data || !data[day]) {
